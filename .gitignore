@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Notebooks
+.ipynb_checkpoints/
+
+# Data — never commit data files
+data/*
+!data/.gitkeep
+*.csv
+*.parquet
+*.joblib
+
+# OS / editors
+.DS_Store
+.vscode/
+.idea/
