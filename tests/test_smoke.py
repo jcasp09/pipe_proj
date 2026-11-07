@@ -3,7 +3,14 @@ import importlib
 import pytest
 
 CORE_MODULES = [
-    "io", "schema", "split", "profile", "correlation", "recipe", "transformers", "compiler",
+    "io",
+    "schema",
+    "split",
+    "profile",
+    "correlation",
+    "recipe",
+    "transformers",
+    "compiler",
 ]
 
 
