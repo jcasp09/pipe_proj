@@ -100,7 +100,7 @@ def test_infer_schema_keeps_column_order(messy_df):
 def test_suggest_exclusions(messy_df):
     schema = infer_schema(messy_df)
 
-    excluded = suggest_exclusions(messy_df, schema)
+    excluded = suggest_exclusions(schema)
 
     assert set(excluded) == {"Unnamed: 0", "country", "notes"}
     assert "ID" in excluded["Unnamed: 0"]
@@ -112,7 +112,7 @@ def test_all_missing_column_is_near_empty_not_id():
     """UCI Air Quality's trailing ';;' columns load as 'Unnamed: 15', all NaN."""
     df = pd.DataFrame({"CO": [2.6, 2.0], "Unnamed: 15": [None, None]})
 
-    excluded = suggest_exclusions(df, infer_schema(df))
+    excluded = suggest_exclusions(infer_schema(df))
 
     assert excluded == {"Unnamed: 15": "near-empty (100% missing)"}
 
@@ -136,4 +136,4 @@ def test_load_then_infer_credit_like_file(write_csv):
         "MonthlyIncome": ColumnType.NUMERIC,
     }
     assert schema["MonthlyIncome"].missing_frac == pytest.approx(0.2)
-    assert suggest_exclusions(df, schema) == {"Unnamed: 0": "ID-like (no predictive meaning)"}
+    assert suggest_exclusions(schema) == {"Unnamed: 0": "ID-like (no predictive meaning)"}

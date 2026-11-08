@@ -54,7 +54,7 @@ def infer_column(s: pd.Series) -> ColumnInfo:
     return ColumnInfo(str(s.name), col_type, reason, int(n_unique), missing_frac)
 
 
-def suggest_exclusions(df: pd.DataFrame, schema: dict[str, ColumnInfo]) -> dict[str, str]:
+def suggest_exclusions(schema: dict[str, ColumnInfo]) -> dict[str, str]:
     """Columns we suggest dropping before analysis, mapped to the reason.
 
     The caller should not offer the chosen target column for exclusion.
